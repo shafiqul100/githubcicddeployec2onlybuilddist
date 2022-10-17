@@ -56,8 +56,8 @@ jobs:
           #      npm run build
           #      pm2 restart api
      - name: Download Artifact from build   
-      uses: actions/download-artifact@v3
-      with:
+       uses: actions/download-artifact@v3
+       with:
           name: my-artifact
           path: /home/ubuntu/cicdgithubaction/dist/
      
