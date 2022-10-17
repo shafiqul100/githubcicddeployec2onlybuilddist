@@ -55,6 +55,7 @@ jobs:
           #      npm install
           #      npm run build
           #      pm2 restart api
+    - name: Download Artifact from build   
        uses: actions/download-artifact@v3
        with:
           name: my-artifact
