@@ -55,11 +55,16 @@ jobs:
           #      npm install
           #      npm run build
           #      pm2 restart api
+
+  depoly:
+    needs: [depoly]
+    runs-on: ubuntu-latest   
+
+    steps:       
      - name: Download Artifact from build    
        uses: actions/download-artifact@v3
        with:
           name: my-artifact
-          run: cd /home/ubuntu/cicdgithubaction/dist/
           path: /home/ubuntu/cicdgithubaction/dist/
      
 
