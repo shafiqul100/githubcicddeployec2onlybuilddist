@@ -44,23 +44,23 @@ jobs:
           username:  ${{ secrets.USER }}
           key:  ${{ secrets.KEY }}
           port:  ${{ secrets.PORT }}
-          # script: |
-          #     curl -o-   https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh    | bash
-          #     . ~/.nvm/nvm.sh
+          script: |
+              curl -o-   https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh    | bash
+              . ~/.nvm/nvm.sh
 
-          #      nvm instal 14
-          #      npm install -g pm2
-          #      cd ~/CICD
-          #      git pull origin main
-          #      npm install
-          #      npm run build
-          #      pm2 restart api
+               nvm instal 14
+               npm install -g pm2
+               cd ~/CICD
+               git pull origin main
+               npm install
+               npm run build
+               pm2 restart api
        
-     - name: Download Artifact from build    
-       uses: actions/download-artifact@v3
-       with:
-          name: my-artifact
-          path: /home/ubuntu/dist/
+    #  - name: Download Artifact from build    
+    #    uses: actions/download-artifact@v3
+    #    with:
+    #       name: my-artifact
+    #       path: /home/ubuntu/dist/
      
 
 
