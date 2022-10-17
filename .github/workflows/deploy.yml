@@ -61,8 +61,8 @@ jobs:
     #    with:
     #       name: my-artifact
     #       path: /home/ubuntu/dist/
-        - name: Display structure of downloaded files
-          run: scp -r my-artifact/* ubuntu@34.254.183.73:/home/ubuntu/dist
+    - name: Display structure of downloaded files
+        run: scp -r my-artifact/* ubuntu@34.254.183.73:/home/ubuntu/dist
 
 
 
