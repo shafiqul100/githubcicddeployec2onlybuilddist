@@ -59,8 +59,8 @@ jobs:
        uses: actions/download-artifact@v3
        with:
           name: my-artifact
-          run: cd /home/ubuntu/cicdgithubaction/dist
-          path: .
+          run: cd /home/ubuntu/cicdgithubaction/dist/
+          path: /home/ubuntu/cicdgithubaction/dist/
      
 
 
