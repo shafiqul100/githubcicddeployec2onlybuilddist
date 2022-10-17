@@ -55,17 +55,12 @@ jobs:
           #      npm install
           #      npm run build
           #      pm2 restart api
-
-  copytosec2:
-    needs: [depoly]
-    runs-on: ubuntu-latest   
-
-    steps:       
+       
      - name: Download Artifact from build    
        uses: actions/download-artifact@v3
        with:
           name: my-artifact
-          path: /home/ubuntu/cicdgithubaction/dist/
+          path: /home/ubuntu/dist/
      
 
 
