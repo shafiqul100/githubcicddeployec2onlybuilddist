@@ -26,7 +26,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: githubcicddeployec2onlybuilddist/ # or path/to/artifact
+          path: /home/runner/work/githubcicddeployec2onlybuilddist/githubcicddeployec2onlybuilddist/ # or path/to/artifact
 
         env: 
           CI: true   
