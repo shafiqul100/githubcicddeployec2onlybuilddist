@@ -57,10 +57,9 @@ jobs:
           #      pm2 restart api
        
      - name: Download Artifact from build    
-       uses: actions/download-artifact@v2
+     - uses: actions/download-artifact@v3
        with:
-          name: my-artifact
-          path: /home/ubuntu/dist
+        name: my-artifact
       #  - name: Display structure of downloaded files
       #     run: scp -r my-artifact/* ubuntu@34.254.183.73:/home/ubuntu/dist
 
