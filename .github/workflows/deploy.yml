@@ -27,7 +27,13 @@ jobs:
         with:
           name: my-artifact
           path: /home/runner/work/githubcicddeployec2onlybuilddist/githubcicddeployec2onlybuilddist/ # or path/to/artifact
+      
+      - name: List output files
+        run: ls
 
+      - name: List dist files
+        run: cd dist && ls
+        
         env: 
           CI: true   
 
