@@ -44,20 +44,11 @@ jobs:
           username:  ${{ secrets.USER }}
           key:  ${{ secrets.KEY }}
           port:  ${{ secrets.PORT }}
-      #  - name: copy file via ssh password
-      #    uses: appleboy/scp-action@master
-      #    with:
-      #       host: ${{ secrets.HOST }}
-      #       username: ${{ secrets.USER }}
-      #       password: ${{ secrets.KEY }}
-      #       port: ${{ secrets.PORT }}
-      #       source: my-artifact
-      #       target: "test"
           script: |
               curl -o-   https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh    | bash
               . ~/.nvm/nvm.sh
 
-               nvm instal 14
+               npm instal 14
                npm install -g pm2
                cd ~/CICD
                git pull origin main
