@@ -23,10 +23,10 @@ jobs:
           npm install
           npm run build
 
-      - uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: /home/runner/work/githubcicddeployec2onlybuilddist/githubcicddeployec2onlybuilddist/ # or path/to/artifact
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: my-artifact
+      #     path: /home/runner/work/githubcicddeployec2onlybuilddist/githubcicddeployec2onlybuilddist/ # or path/to/artifact
       
       - name: List output files
         run: ls
@@ -34,49 +34,64 @@ jobs:
       - name: List dist files
         run: cd dist && ls
         
+
+        # - name: Download file via SSH
+        #   uses: nicklasfrahm/scp-action@main
+        #   with:
+        #     direction: download
+        #     host: ${{ secrets.HOST }}
+        #     # fingerprint: ${{ secrets.SSH_TARGET_FINGERPRINT }}
+        #     username: ${{ secrets.USER }}
+        #     key: ${{ secrets.KEY }}
+        #     # proxy_host: ${{ secrets.SSH_PROXY_HOST }}
+        #     # proxy_fingerprint: ${{ secrets.SSH_PROXY_FINGERPRINT }}
+        #     # proxy_username: ${{ secrets.SSH_USER }}
+        #     # proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        #     source: ./dist/*
+        #     target: / 
       - name: Publish
         uses: nogsantos/scp-deploy@master
         with:
           src: ./dist/*
-          host: ${{ secrets.SSH_HOST }}
-          remote: ${{ secrets.SSH_DIR }}
-          port: ${{ secrets.SSH_PORT }}
-          user: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.HOST }}
+          remote: ${{ secrets.DIR }}
+          port: ${{ secrets.PORT }}
+          user: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
 
 
         env: 
           CI: true   
 
 
-  depoly:
-    needs: [build]
-    runs-on: ubuntu-latest
+  # depoly:
+  #   needs: [build]
+  #   runs-on: ubuntu-latest
 
-    steps:
-     - name: SSH deploy
-       uses: appleboy/ssh-action@master
-       with:
-          host: ${{ secrets.HOST }}
-          username:  ${{ secrets.USER }}
-          key:  ${{ secrets.KEY }}
-          port:  ${{ secrets.PORT }}
-          script: |
-              curl -o-   https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh    | bash
-              . ~/.nvm/nvm.sh
+  #   steps:
+  #    - name: SSH deploy
+  #      uses: appleboy/ssh-action@master
+  #      with:
+  #         host: ${{ secrets.HOST }}
+  #         username:  ${{ secrets.USER }}
+  #         key:  ${{ secrets.KEY }}
+  #         port:  ${{ secrets.PORT }}
+  #         script: |
+  #             curl -o-   https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh    | bash
+  #             . ~/.nvm/nvm.sh
 
-               npm instal 14
-               npm install -g pm2
-               cd ~/CICD
-               git pull origin main
-               npm install
-               npm run build
-               pm2 restart api
+  #              npm instal 14
+  #              npm install -g pm2
+  #              cd ~/CICD
+  #              git pull origin main
+  #              npm install
+  #              npm run build
+  #              pm2 restart api
        
-    #  - name: Download Artifact from build    
-    #    uses: actions/download-artifact@v3
-    #    with:
-    #       name: my-artifact
+  #   #  - name: Download Artifact from build    
+  #   #    uses: actions/download-artifact@v3
+  #   #    with:
+  #   #       name: my-artifact
 
 
 
